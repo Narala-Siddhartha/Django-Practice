@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block index %}
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <!--fetching data from views.py-->
+        <title>{{title}}</title>
+        <link rel="stylesheet" href="/static/css/style.css"/> 
+    </head>
+    <body>
+
+
+
+        <div>
+            Welcome
+            <h1>{{main}}</h1>
+        </div>
+        <!--fetching data from views.py using for loop-->
+        <form method="get">
+            <input type="text" name="search"/>
+            <button type="submit">Search</button>
+        </form>
+
+        {% for val in course_list %}
+        <div>{{forloop.revcounter0}}{{val}}</div>
+        {%  endfor %}
+        <br>
+        <table border="1" cellpadding="10">
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Phone</th>
+            </tr>
+            <!--fetching data from views.py using for loop-->
+            {% for n in ServiceData %}
+            <tr>
+                <td>{{n.Name}}</td>
+                <td>{{n.Age}}</td>
+                <td>{{n.Phone}}</td>
+            </tr>
+            {% empty %}
+            Data Not found
+            {% endfor %}
+        </table>
+        <br>
+        <br>
+        <h3>Person Data</h3>
+        <table border="1" cellpadding="10">
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Phone</th>
+            </tr>
+            <!--fetching data from views.py using for loop-->
+            {% for n in PersonData %}
+            <tr>
+                <td><a href="/persondetails/{{n.id}}" target="_blank">{{n.person_name}}</a></td>
+                <td>{{n.person_age}}</td>
+                <td>{{n.person_phone}}</td>
+                <td>
+                    {% if n.person_img != NULL %}
+                    <img src="/media/{{n.person_img}}" width="80px">
+                    {% endif %}
+                </td>
+            </tr>
+
+            {% endfor %}
+        </table>
+        <!--If else conditional statements in django-->
+        {% comment %} {% if numbers|length > 0 %}
+            {% for n in numbers %}
+                <div>{{n}}</div>
+            {% endfor %}
+        {% else %}
+            <h4>Data not found</h4>
+        {% endif %} {% endcomment %}
+
+        <img id="django" src="/static/images/python-django.png" alt='django-img'/>
+        <div class='container'>
+        
+            <h1>Fill data Here</h1>
+            {{con}}
+        <div class="mb-3">
+            <form method="post" action="{% url 'savedata' %}">
+                 {% csrf_token %}
+            <label for="exampleFormControlInput1" class="form-label">Name</label>
+            <input type="text" name="name" class="form-control" id="exampleFormControlInput1" placeholder="Name Here">
+            <label for="exampleFormControlInput1" class="form-label">Email</label>
+            <input type="Email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="ex:123@gmail.com">
+            <label for="exampleFormControlInput1" class="form-label">Websie</label>
+            <input type="text" name="website" class="form-control" id="exampleFormControlInput1" placeholder="Website Link here">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Message</label>
+            <textarea name="message" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+          <div class="mb-3">
+            <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+        </form>
+
+        </div>
+
+        
+
+
+    </body>
+</html>
+
+{% endblock %}

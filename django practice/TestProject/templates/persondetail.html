@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block persondetail %}
+
+<h1>{{PersonDetail.person_name}}</h1>
+<h5>Age:{{PersonDetail.person_age}}
+<h5>Phone:{{PersonDetail.person_phone}}
+<p>{{PersonDetail.person_desc | safe}}
+{% endblock %}

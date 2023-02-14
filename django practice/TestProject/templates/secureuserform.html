@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block userform %}
+<div class="container">
+<form method="post" >
+    {% csrf_token %}
+    {{form}}
+
+    {% comment %} <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Number 1</label>
+      <input type="text" name="n1" value="{{nu1}}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Number 2</label>
+      <input type="text" name="n2" value="{{nu2}}" class="form-control" id="exampleInputPassword1">
+    </div>
+    
+ {% endcomment %}
+    <button type="submit" class="btn btn-primary my-4">Submit</button>
+    <br/>
+    <label for="exampleInputPassword1" class="form-label pt-4">Output</label>
+    <input type="text" value="{{output}}" class="form-control" id="exampleInputPassword1">
+  </form>
+</div>
+  {% endblock %}

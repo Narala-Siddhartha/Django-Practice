@@ -1,0 +1,31 @@
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container-fluid">
+        <h1 align="center">Calculator</h1>
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="" class="form-label">Number 1</label>
+      <input type="text" name="num1" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <label for="" class="form-label mt-4">operation</label>
+    <select name ="operation" class="form-control">
+        <option value="+">ADD(+)</option>
+        <option value="-">SUBTRACT(-)</option>
+        <option value="*">MULTIPLY(*)</option>
+        <option value="/">DIVIDE(/)</option>
+    </select>
+    <div class="mb-3">
+      <label for="" class="form-label mt-4">Number 2</label>
+      <input type="text" name="num2" class="form-control" id="exampleInputPassword1">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <br>
+    <label for="" class="form-label mt-4">Output Ansewer:</label>
+      <input type="text" name="output" value="{{answer}}" class="form-control" id="exampleInputPassword1">
+  </form>
+    </div>
+
+</body>
